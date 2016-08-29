@@ -38,9 +38,9 @@
 		}
 		.main{
 			position: absolute;
-			top: 6.3%;
+			top: 4.4%;
 			width: 100%;
-			height: 87%;
+			height: 90%;
 		
 		}
 		.main .scroll{
@@ -85,35 +85,37 @@
 		var app = angular.module('zoiew', ['ionic', 'ui.router']);
 		app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
 			$urlRouterProvider.when('', '/index');
-			$stateProvider.state('index', {
-					url: '/index',
-					templateUrl: 'views/index.html',
-					controller: 'indexCtrl'
-			}).state('video', {
-					url: '/video',
-					templateUrl: 'views/video.html',
-					controller: 'videoCtrl'
-			}).state('focus', {
-				url: '/focus',
-				templateUrl: 'views/focus.html',
-				controller: 'focusCtrl'
-			}).state('aboutMe', {
-				url: '/aboutMe',
-				templateUrl: 'views/aboutMe.html',
-				controller: 'aboutMeCtrl'
-			}).state('hot', {
-				url: '/hot',
-				templateUrl: 'views/hot.html',
-				controller: 'hotCtrl'
-			}).state('funny', {
-				url: '/funny',
-				templateUrl: 'views/funny.html',
-				controller: 'funnyCtrl'
-			})
+			$urlRouterProvider.when('/index', '/index/hot');
+			$stateProvider
+					.state('index', {
+							url: '/index',
+							templateUrl: 'views/index.html',
+							controller: 'indexCtrl'
+					}).state('video', {
+							url: '/video',
+							templateUrl: 'views/video.html',
+							controller: 'videoCtrl'
+					}).state('focus', {
+						url: '/focus',
+						templateUrl: 'views/focus.html',
+						controller: 'focusCtrl'
+					}).state('aboutMe', {
+						url: '/aboutMe',
+						templateUrl: 'views/aboutMe.html',
+						controller: 'aboutMeCtrl'
+					}).state('index.hot', {
+						url: '/hot',
+						templateUrl: 'views/index/hot.html',
+						controller: 'hotCtrl'
+					}).state('index.funny', {
+						url: '/funny',
+						templateUrl: 'views/index/funny.html',
+						controller: 'funnyCtrl'
+					})
 			
 		}])
 
-		app.controller('indexCtrl', ['$scope', '$http', function($scope, $http) {
+		app.controller('funnyCtrl', ['$scope', '$http', function($scope, $http) {
 			$http.get('php/joke.php').success(function(data) {
 				console.log(data);
 				$scope.jokes = data.detail;
