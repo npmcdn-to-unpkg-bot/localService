@@ -1,0 +1,93 @@
+<nav>
+	<a href="#/index/hot">热点</a>
+	<a href="#/index/science">科技</a>
+	<a href="#/index/olympic">奥运</a>
+	<a href="#/index/sport">体育</a>
+	<a href="#/index/funny">笑话</a>
+	<a href="#/index/game">游戏</a>
+	<a href="#/index/army">军事</a>
+	<a href="#/index/tf">头条号</a>
+</nav>
+<div class="content" ui-view=""></div>
+{{name}}
+		
+
+<style>
+	nav {
+		display: flex;
+		position: fixed;
+		top: 10%;
+		height: 6%;
+		line-height: 26px;
+		text-align: center;
+		background: white;
+		width: 100%;
+		background: #d33d3c;
+		border-top:1px solid #fff;
+		box-shadow: 1px 2px 2px gray;
+	}
+	
+	nav a {
+		align-items: center;
+		/*	高度方向上居中对齐,三句缺一不可;*/
+		justify-content: space-around;
+		display: flex;
+		flex: 12.5%;
+		color: #fff;
+		font-size: 20px;
+	}
+	.content{
+		position:absolute;
+		top:7.5%;
+		width:100%;
+		height:93%;
+	}
+	.port {
+		border-collapse:collapse;
+		background-color: #11C1F3;
+		font-size:12px;
+		border:1px solid #000;
+	}
+	.port tr{
+		display:flex;
+		width:100%;
+		
+		
+	}
+
+	.port tr td{
+		padding:1%;
+	}
+	.port thead{
+		display:flex;
+	}
+	.port thead th:nth-child(1){
+		flex:5.95;
+	}
+	.port thead th:nth-child(2){
+		flex:1.65;
+	}
+	.port thead th:nth-child(3){
+		flex:2.4;
+		padding:1;
+
+	}
+
+	.port tr td:nth-child(1){
+		flex:6;
+	}
+	.port tr td:nth-child(2){
+		flex:1.5;
+	}
+	.port tr td:nth-child(3){
+		flex:2.5;
+		padding:0;
+		overflow:hidden;
+	}
+	.port tr td img{
+		width:50px;
+		height:50px;
+		
+		
+	}
+</style>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html ng-app="zoiew">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>今日头条</title>
+	</head>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+		}
+		
+		a {
+			color: #000000;
+			text-decoration: none;
+		}
+		/*字体设置*/
+		
+		@font-face {
+			font-family: myFirstFont;
+			src: url('font/叶根友毛笔行书2.0.ttf');
+		}
+		
+		header {
+			position: fixed;
+			top: 0px;
+			height: 10%;
+			background-color: #d33d3c;
+			width: 100%;
+			font-size: 32px;
+			font-family: myFirstFont;
+			color: white;
+			text-align: center;
+			border-bottom: 2px solid #fff;
+			/*	高度方向上居中对齐,三句缺一不可;*/
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+		}
+		.main{
+			position: absolute;
+			top: 10%;
+			width: 100%;
+			height: 82%;
+		
+		}
+		
+		.main .view {
+			width: 100%;
+			height: 100%;
+			background: #f96;
+		}
+		.main .juhua{
+			position:absolute;
+			z-index:10;
+			
+		}
+		
+		footer {
+			position: fixed;
+			bottom: 0px;
+			height: 8%;
+			line-height: 50px;
+			background-color: #f3f5f4;
+			width: 100%;
+			color: white;
+			text-align: center;
+			font-weight: 900;
+		}
+		
+		footer section {
+			display: flex;
+		}
+		
+		footer section a {
+			/*	高度方向上居中对齐,三句缺一不可;*/
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+			flex: 25%;
+			color: #000;
+			font-size: 20px;
+		}
+	</style>
+
+	<body>
+		<!---->
+		<header>今日头条</header>
+		<article class="main">
+			<div class="view" ui-view=""></div>
+			<!--<div class="juhua"><img src="img/juhua.jpg" alt="*" /></div>-->
+		</article>
+
+
+		<footer>
+			<section>
+				<a href="#/index/hot">首页</a>
+				<a href="#/video">视频</a>
+				<a href="#/focus">关注</a>
+				<a href="#/aboutMe">我的</a>
+			</section>
+
+		</footer>
+
+	</body>
+	<script src="js/angular-1.5.8/angular.js"></script>
+	<script src="js/ui-route.js"></script>
+	<script>
+		var app = angular.module('zoiew', ['ui.router']);
+		app.config(function($stateProvider, $urlRouterProvider) {
+			$urlRouterProvider.when('', '/index/hot');
+			$stateProvider.state('index', {
+					url: '/index',
+					templateUrl: 'views/index.html',
+					controller: 'indexCtrl'
+				}).state('video', {
+					url: '/video',
+					templateUrl: 'views/video.html',
+					controller: 'videoCtrl'
+				})
+				.state('focus', {
+					url: '/focus',
+					templateUrl: 'views/focus.html',
+					controller: 'focusCtrl'
+				}).state('aboutMe', {
+					url: '/aboutMe',
+					templateUrl: 'views/aboutMe.html',
+					controller: 'aboutMeCtrl'
+				}).state('index.hot', {
+					url: '/hot',
+					templateUrl: 'views/hot.html',
+					controller: 'hotCtrl'
+				}).state('index.science', {
+					url: '/science',
+					templateUrl: 'views/science.html',
+					controller: 'scienceCtrl'
+				}).state('index.olympic', {
+					url: '/olympic',
+					templateUrl: 'views/olympic.html',
+					controller: 'olympicCtrl'
+				}).state('index.sport', {
+					url: '/sport',
+					templateUrl: 'views/sport.html',
+					controller:'sportCtrl'
+				}).state('index.funny', {
+					url: '/funny',
+					templateUrl: 'views/funny.html',
+					controller: 'hotCtrl'
+				}).state('index.game', {
+					url: '/game',
+					templateUrl: 'views/game.html',
+					controller: 'gameCtrl'
+				}).state('index.army', {
+					url: '/army',
+					templateUrl: 'views/army.html',
+					controller: 'armyCtrl'
+				}).state('index.tf', {
+					url: '/tf',
+					templateUrl: 'views/toutiao.html',
+					controller: 'touTiaoCtrl'
+				})
+		})
+		app.controller('hotCtrl', ['$scope', '$http', function($scope, $http) {
+			
+		}])
+		app.controller('indexCtrl', ['$scope', '$http', function($scope, $http) {
+			$http.get('php/joke.php').success(function(data) {
+				console.log(data);
+				$scope.jokes = data.detail;
+			})
+		}])
+		app.controller('touTiaoCtrl', ['$scope', '$http', function($scope, $http) {
+			
+		}])
+	</script>
+
+</html>

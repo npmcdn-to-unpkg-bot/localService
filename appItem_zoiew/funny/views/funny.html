@@ -1,0 +1,21 @@
+
+<table class="port" border="1">
+		<thead>
+			<th>内容</th>
+			<th>作者</th>
+			<th>图片</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="joke in jokes">
+				<td>{{joke.content}}</td>
+				<td>{{joke.author}}</td>
+				<td><img src="{{joke.picUrl}}" alt="*" /></td>
+			</tr>
+		</tbody>
+	</table>
+<style>
+	.p1 {
+		height:100%;
+		background-color: yellow;
+	}
+</style>
