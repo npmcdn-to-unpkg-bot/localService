@@ -83,43 +83,71 @@
 	</body>
 	<script>
 		var app = angular.module('zoiew', ['ionic', 'ui.router']);
-		app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
-			$urlRouterProvider.when('', '/index');
+		app.config(function($stateProvider, $urlRouterProvider) {
+			$urlRouterProvider.when('', '/index/hot');
 			$urlRouterProvider.when('/index', '/index/hot');
-			$stateProvider
-					.state('index', {
-							url: '/index',
-							templateUrl: 'views/index.html',
-							controller: 'indexCtrl'
-					}).state('video', {
-							url: '/video',
-							templateUrl: 'views/video.html',
-							controller: 'videoCtrl'
-					}).state('focus', {
-						url: '/focus',
-						templateUrl: 'views/focus.html',
-						controller: 'focusCtrl'
-					}).state('aboutMe', {
-						url: '/aboutMe',
-						templateUrl: 'views/aboutMe.html',
-						controller: 'aboutMeCtrl'
-					}).state('index.hot', {
-						url: '/hot',
-						templateUrl: 'views/index/hot.html',
-						controller: 'hotCtrl'
-					}).state('index.funny', {
-						url: '/funny',
-						templateUrl: 'views/index/funny.html',
-						controller: 'funnyCtrl'
-					})
+			$stateProvider.state('index', {
+					url: '/index',
+					templateUrl: 'views/index.html',
+					controller: 'indexCtrl'
+				}).state('video', {
+					url: '/video',
+					templateUrl: 'views/video.html',
+					controller: 'videoCtrl'
+				})
+				.state('focus', {
+					url: '/focus',
+					templateUrl: 'views/focus.html',
+					controller: 'focusCtrl'
+				}).state('aboutMe', {
+					url: '/aboutMe',
+					templateUrl: 'views/aboutMe.html',
+					controller: 'aboutMeCtrl'
+				}).state('index.hot', {
+					url: '/hot',
+					templateUrl: 'views/hot.html',
+					controller: 'hotCtrl'
+				}).state('index.science', {
+					url: '/science',
+					templateUrl: 'views/science.html',
+					controller: 'scienceCtrl'
+				}).state('index.olympic', {
+					url: '/olympic',
+					templateUrl: 'views/olympic.html',
+					controller: 'olympicCtrl'
+				}).state('index.sport', {
+					url: '/sport',
+					templateUrl: 'views/sport.html',
+					controller:'sportCtrl'
+				}).state('index.funny', {
+					url: '/funny',
+					templateUrl: 'views/funny.html',
+					controller: 'hotCtrl'
+				}).state('index.game', {
+					url: '/game',
+					templateUrl: 'views/game.html',
+					controller: 'gameCtrl'
+				}).state('index.army', {
+					url: '/army',
+					templateUrl: 'views/army.html',
+					controller: 'armyCtrl'
+				}).state('index.tf', {
+					url: '/tf',
+					templateUrl: 'views/toutiao.html',
+					controller: 'touTiaoCtrl'
+				})
+		})
+		app.controller('hotCtrl', ['$scope', '$http', function($scope, $http) {
 			
 		}])
-
-		app.controller('funnyCtrl', ['$scope', '$http', function($scope, $http) {
+		app.controller('indexCtrl', ['$scope', '$http', function($scope, $http) {
 			$http.get('php/joke.php').success(function(data) {
 				console.log(data);
 				$scope.jokes = data.detail;
 			})
+		}])
+		app.controller('touTiaoCtrl', ['$scope', '$http', function($scope, $http) {
+			
 		}])
 	</script>
 

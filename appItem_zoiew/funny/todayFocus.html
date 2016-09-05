@@ -67,7 +67,7 @@
 			position: fixed;
 			bottom: 0px;
 			height: 8%;
-			line-height: 50px;
+			/*line-height: 50px;*/
 			background-color: #f3f5f4;
 			width: 100%;
 			color: white;
@@ -77,16 +77,29 @@
 		
 		footer section {
 			display: flex;
+			height:100%;
 		}
 		
 		footer section a {
 			/*	高度方向上居中对齐,三句缺一不可;*/
-			display: flex;
+		/*	display: flex;
 			align-items: center;
-			justify-content: space-around;
+			justify-content: space-around;*/
+			
 			flex: 25%;
+			height:100%;
 			color: #000;
 			font-size: 20px;
+			cursor: pointer;
+		}
+		footer section a img{
+			width:40px;
+			height:40px;
+			margin-top:5px;
+		}
+		footer section a p{
+			width:100%;
+		/*	height:40px;*/
 		}
 	</style>
 
@@ -101,10 +114,11 @@
 
 		<footer>
 			<section>
-				<a href="#/index/hot">首页</a>
-				<a href="#/video">视频</a>
-				<a href="#/focus">关注</a>
-				<a href="#/aboutMe">我的</a>
+				<a href="#/index/hot"><img src="img/social-windows.png" alt="*" /><p>首页</p></a>
+				<a href="#/video"><img src="img/video.png" alt="*" /><p>视频</p></a>
+				<a href="#/focus"><img src="img/heart.png" alt="*" /><p>关注</p></a>
+				<a href="#/aboutMe"><img src="img/aboutMe.png" alt="*" /><p>我的</p></a>
+				
 			</section>
 
 		</footer>
@@ -179,6 +193,7 @@
 		app.controller('touTiaoCtrl', ['$scope', '$http', function($scope, $http) {
 			
 		}])
+		
 	</script>
 
 </html>
